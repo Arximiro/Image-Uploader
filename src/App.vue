@@ -1,6 +1,7 @@
 <template>
 <div>
-  <AppHeader /> 
+  <AppHeader />
+  <router-view></router-view> <!-- This tag tells Vue router, anytime you match a route, take that component and place it right here -->
 </div>
 </template>
 

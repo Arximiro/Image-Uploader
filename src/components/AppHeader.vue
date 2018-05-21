@@ -8,10 +8,10 @@
       <div v-if="isLoggedIn" class="horizontal">
         <a href="/" class="item">Gallery</a>
         <a href="/" class="item">Upload</a>
-        <a href="/" class="item">Logout</a>
+        <a href="#" @click="logout" class="item">Logout</a>
       </div>
 
-      <a v-else href="#" class="ui item" @click="login">Login</a>
+      <a v-else href="#" class="ui item login" @click="login">Login</a>
     </div>
   </div>
 </template>
@@ -20,30 +20,34 @@
 
 
 <script>
-import { mapActions, mapGetters } from 'vuex'; // Kinda like mapDispatchToProps and mapStateToProps from React.
+import { mapActions, mapGetters } from "vuex"; // Kinda like mapDispatchToProps and mapStateToProps from React.
 
 export default {
-  name: 'AppHeader',
+  name: "AppHeader",
   computed: {
-    ...mapGetters(['isLoggedIn'])
+    ...mapGetters(["isLoggedIn"])
   },
   methods: {
-    ...mapActions(['login'])
-  } 
-}
+    ...mapActions(["login", "logout"])
+  }
+};
 </script>
 
 
 
 
 <style lang="scss" scoped>
-  .horizontal {
-    display: flex;
+.horizontal {
+  display: flex;
 
-    
-    & a:hover {
-      background-color: orange !important;
-      transition: all .3s !important;
-    }   
+  & a:hover {
+    background-color: orange !important;
+    transition: all 0.3s !important;
   }
+}
+
+.login:hover {
+  background-color: rgb(138, 170, 138) !important;
+  transition: all 0.3s !important;
+}
 </style>

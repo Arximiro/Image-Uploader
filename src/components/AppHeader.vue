@@ -5,10 +5,10 @@
     </a>
     
     <div class="right menu">
-      <div v-if="isLoggedIn">
-        <a href="/" class="ui item">Gallery</a>
-        <a href="/" class="ui item">Upload</a>
-        <a href="/" class="ui item">Logout</a>
+      <div v-if="isLoggedIn" class="horizontal">
+        <a href="/" class="item">Gallery</a>
+        <a href="/" class="item">Upload</a>
+        <a href="/" class="item">Logout</a>
       </div>
 
       <a v-else href="#" class="ui item" @click="login">Login</a>
@@ -37,5 +37,13 @@ export default {
 
 
 <style lang="scss" scoped>
+  .horizontal {
+    display: flex;
 
+    
+    & a:hover {
+      background-color: orange !important;
+      transition: all .3s !important;
+    }   
+  }
 </style>

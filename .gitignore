@@ -2,6 +2,7 @@
 node_modules
 /dist
 gg.md
+vue-notes.md
 
 # local env files
 .env.local

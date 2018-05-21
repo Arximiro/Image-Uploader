@@ -2,7 +2,7 @@ import api from '../../api/imgur';
 import qs from 'qs';
 
 const state = {
-  token: null
+  token: window.localStorage.getItem('imgur_token')
 };
 
 const getters = {
@@ -10,11 +10,12 @@ const getters = {
 };
 
 const actions = {
-  login: () => api.login(),
+  login: () => api.login(), // redirects the user's browser to the authenticate URL so they can get authenticated
   finalizeLogin: ({ commit }, hash) => {
     const query = qs.parse(hash.replace('#', '')); // removes the # from the beginning of the hash passed in via AuthHandler
 
     commit('setToken', query.access_token) // passes the token pulled from the url into setToken
+    window.localStorage.setItem('imgur_token', query.access_token);
   },
   logout: ({ commit }) => commit('setToken', null)
 
@@ -27,7 +28,7 @@ const mutations = {
 };
 
 export default {
-  state,
+  state,  // same as state: state - since they are the same name you can shorten it to just state
   getters,
   actions,
   mutations

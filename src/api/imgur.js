@@ -15,12 +15,26 @@ export default {
     // resolves to: https://api.imgur.com/oauth2/authorize?client_id=886445a9c19beff&response_type=token
     // window.location causes the user's browser to navigate to the URL specified
   },
-  fethImages(token) {
+  fetchImages(token) {
     return axios.get(`${ROOT_URL}/3/account/me/images`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
+  },
+  uploadImages(images, token) {
+    const promises = Array.from(images).map(img => {
+      const formData = new FormData();
+      formData.append('image', img); // takes the img file and attaches it to the formData value of image, which the API expects
+
+      return axios.post(`${ROOT_URL}/3/image`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+    });
+
+    return Promise.all(promises);
   }
 };
 

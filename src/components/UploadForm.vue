@@ -1,6 +1,14 @@
 <template>
   <div class="dropper">
-    <input type="file" />
+    <input
+      type="file"
+      @change="uploadImages($event.target.files)"
+      multiple
+      accept="image/*"
+      /> 
+      <!-- $event... part finds event object and pulls out the .target.files object -->
+      <!-- multiple part sets the ability to allow multiple file selection -->
+      <!-- accept part makes it where users can only select image files to upload -->
     <span>Drag files here!</span>
   </div>
 </template>
@@ -9,8 +17,11 @@
 
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
-name: 'UploadForm'
+name: 'UploadForm',
+methods: mapActions(['uploadImages'])
 }
 </script>
 

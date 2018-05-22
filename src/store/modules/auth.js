@@ -17,7 +17,10 @@ const actions = {
     commit('setToken', query.access_token) // passes the token pulled from the url into setToken
     window.localStorage.setItem('imgur_token', query.access_token);
   },
-  logout: ({ commit }) => commit('setToken', null)
+  logout: ({ commit }) => {
+    commit('setToken', null);
+    window.localStorage.removeItem('imgur_token');
+  } 
 
 };
 

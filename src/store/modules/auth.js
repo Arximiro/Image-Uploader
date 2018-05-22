@@ -1,5 +1,7 @@
-import api from '../../api/imgur';
 import qs from 'qs';
+
+import api from '../../api/imgur';
+import { router } from '../../main';
 
 const state = {
   token: window.localStorage.getItem('imgur_token')
@@ -15,12 +17,14 @@ const actions = {
     const query = qs.parse(hash.replace('#', '')); // removes the # from the beginning of the hash passed in via AuthHandler
 
     commit('setToken', query.access_token) // passes the token pulled from the url into setToken
-    window.localStorage.setItem('imgur_token', query.access_token);
+    window.localStorage.setItem('imgur_token', query.access_token); // puts the token into local storage to persist login through page refreshes
+
+    router.push('/');
   },
   logout: ({ commit }) => {
     commit('setToken', null);
-    window.localStorage.removeItem('imgur_token');
-  } 
+    window.localStorage.removeItem('imgur_token'); // remove the token from local storage when the user logs out
+  }
 
 };
 

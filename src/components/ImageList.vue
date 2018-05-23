@@ -4,7 +4,7 @@
     <img v-for="img in allImages" :src="img.link" :key="img.id" />
   </div>
 
-  <h1 else>Please Log In to Get Started!</h1>
+  <h1 v-else>Please Log In to Get Started!</h1>
 </div>
 </template>
 

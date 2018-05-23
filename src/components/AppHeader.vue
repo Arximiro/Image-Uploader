@@ -1,5 +1,5 @@
 <template>
-  <div class="ui secondary pointing menu">
+  <div class="ui secondary menu">
     <router-link to="/" class="item active">
       Image Storage
     </router-link>
@@ -37,17 +37,22 @@ export default {
 
 
 <style lang="scss" scoped>
+
 .horizontal {
   display: flex;
-
-  & a:hover {
-    background-color: orange !important;
-    transition: all 0.3s !important;
-  }
 }
 
 .login:hover {
   background-color: rgb(138, 170, 138) !important;
   transition: all 0.3s !important;
+}
+
+a {
+  color: white !important;
+
+  &:hover {
+    background-color: orange !important;
+    transition: all 0.3s !important;
+  }
 }
 </style>

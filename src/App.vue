@@ -27,5 +27,6 @@ export default {
 <style lang="scss" scoped>
   .main {
     background-color: black;
+    color: white;
   }
 </style>
